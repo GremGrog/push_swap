@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 18:15:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/27 20:06:49 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/28 19:55:43 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_stack
 	t_num	*arr;
 	int		size;
 	int		used_size;
+	t_num	min;
+	t_num	max;
 	char	name;
 }				t_stack;
 
@@ -38,12 +40,22 @@ void		quick_sort(int *arr, int low, int high);
 t_stack		*create_second_stack(int size);
 void		print_stack(t_stack *a, t_stack *b);
 
+void		swap_top(t_stack *stck);
 void		swap_a(t_stack *a);
 void		swap_b(t_stack *b);
 void		swap_ss(t_stack *a, t_stack *b);
+
 void		push_a(t_stack *a, t_stack *b);
 void		push_b(t_stack *a, t_stack *b);
+
+void		rotate_stck(t_stack *stck);
 void		rotate_a(t_stack *a);
 void		rotate_b(t_stack *b);
 void		rotate_rr(t_stack *a, t_stack *b);
+
+void		rev_rotate_stck(t_stack *stck);
 void		rev_rotate_a(t_stack *a);
+void		rev_rotate_b(t_stack *a);
+void		rev_rotate_r(t_stack *a, t_stack *b);
+
+void		get_min_max(t_stack *stck);

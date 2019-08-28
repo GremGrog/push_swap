@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 18:50:50 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/27 19:57:02 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/28 19:56:36 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap_b(t_stack *b)
 {
 	if (b->used_size < 2)
 		return ;
-	swap(&(b->arr[b->used_size - 1].val), &(b->arr[b->used_size - 2]).val);
+	swap_top(b);
 	ft_printf("sb\n");
 }
 
@@ -29,23 +29,19 @@ void	push_b(t_stack *a, t_stack *b)
 	b->arr[b->used_size - 1].index = b->used_size - 1;
 	a->arr[a->used_size - 1].index = -1;
 	a->used_size--;
+	get_min_max(a);
+	get_min_max(b);
 	ft_printf("pb\n");
 }
 
 void	rotate_b(t_stack *b)
 {
-	t_num	tmp;
-	int		i;
+	rotate_stck(b);
+	ft_printf("rb\n");
+}
 
-	i = b->used_size - 1;
-	tmp = b->arr[i];
-	while (i > 0)
-	{
-		b->arr[i].val = b->arr[i - 1].val;
-		b->arr[i].index = b->arr[i - 1].index + 1;
-		i--;
-	}
-	b->arr[i].val = tmp.val;
-	b->arr[i].index = 0;
+void	rev_rotate_b(t_stack *b)
+{
+	rev_rotate_stck(b);
 	ft_printf("rb\n");
 }

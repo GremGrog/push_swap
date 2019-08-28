@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:46:33 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/27 17:43:59 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/28 19:55:31 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_stack		*create_argv_stack(int argc, char **argv)
 	else if (argc > 2)
 		a->arr = copy_argv_to_stack(argv, a);
 	a->name = 'a';
+	get_min_max(a);
 	return (a);
 }
 
@@ -59,14 +60,18 @@ t_stack		*create_second_stack(int size)
 {
 	t_stack		*b;
 	int			i;
-	t_num	*num;
-	
+	t_num		*num;
+
 	i = 0;
 	b = (t_stack*)malloc(sizeof(t_stack));
 	b->arr = (t_num*)malloc(sizeof(t_num) * size);
 	b->name = 'b';
 	b->used_size = 0;
 	b->size = size;
+	b->min.val = 0;
+	b->min.index = -1;
+	b->max.val = 0;
+	b->max.index = -1;
 	while (i < size)
 	{
 		num = (t_num*)malloc(sizeof(t_num));

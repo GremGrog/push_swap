@@ -6,38 +6,21 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/27 20:12:31 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/28 20:01:24 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *a, t_stack *b)
+void	sort_three(t_stack *a)
 {
-	int	i;
-	int	j;
-
-	i = a->size - 1;
-	j = a->size - 1;
-	ft_printf("-----------------------\n");
-	while (i >= 0 && j >= 0)
-	{
-		if (IS_EMPTY(a->arr[i].index) == 0)
-			ft_printf("%d %{green}-15d",a->arr[i].index, a->arr[i].val);
-		if (IS_EMPTY(a->arr[i].index) == -1)
-			ft_printf("%-17c", '-');
-		if (IS_EMPTY(b->arr[j].index) == 0)
-			ft_printf("%d %{yellow}d", b->arr[j].index, b->arr[j].val);
-		if (IS_EMPTY(b->arr[j].index) == -1)
-			ft_printf("%c", '-');
-			ft_printf("\n");
-		j--;
-		i--;
-	}
-	ft_printf("-----------------------\n");
-	ft_printf("%c %20c\n", a->name, b->name);
-	ft_printf("%-4d |USED SIZE| %5d\n", a->used_size, b->used_size);
-	ft_printf("-----------------------\n");
+	if ((a->min.index == 0 && a->max.index == 2) || 
+	(a->min.index == 2 && a->max.index == 1) || (a->min.index == 1 && a->max.index == 0))
+		swap_a(a);
+	if (a->min.index == 1 && a->max.index == 2)
+		rotate_a(a);
+	if (a->min.index == 0 && a->max.index == 1)
+		rev_rotate_a(a);
 }
 
 void    push_swap(int argc, char **argv)
@@ -48,30 +31,17 @@ void    push_swap(int argc, char **argv)
     a = create_argv_stack(argc, argv);
 	b = create_second_stack(a->size);
 	print_stack(a, b);
+	if (a->size == 3)
+		sort_three(a);
+	// push_b(a, b);
 	// swap_a(a);
-	// print_stack(a, b);
-	// push_b(a, b);
-	// print_stack(a, b);
-	// push_b(a, b);
-	// print_stack(a, b);
-	// push_b(a, b);
-	// print_stack(a, b);
-	rev_rotate_a(a);
+	// rotate_a(a);
+	// swap_a(a);
+	// rev_rotate_a(a);
+	// rotate_a(a);
+	// rev_rotate_a(a);
+	// rev_rotate_a(a);
 	print_stack(a, b);
 	// push_b(a, b);
 	// print_stack(a, b);
-	// swap_b(b);
-	// print_stack(a, b);
-	// swap_ss(a, b);
-	// print_stack(a, b);
-	// rotate_b(b);
-	// print_stack(a, b);
-	// rotate_rr(a, b);
-	// print_stack(a, b);
-	// b = copy_stack(a);
-    //  for (int i = a->size - 1; i >= 0; i--)
-    //     ft_printf("%d\n", a->arr[i]);
-    // quick_sort(a->arr, 0, a->size - 1);
-    // for (int i = a->size - 1; i >= 0; i--)
-    //    ft_printf("S%d\n", a->arr[i]);
 }

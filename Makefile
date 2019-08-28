@@ -6,7 +6,7 @@
 #    By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/23 18:40:37 by fmasha-h          #+#    #+#              #
-#    Updated: 2019/08/27 18:54:14 by fmasha-h         ###   ########.fr        #
+#    Updated: 2019/08/28 19:53:14 by fmasha-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,13 @@ SRCS =	main.c \
 		validation.c \
 		create_stack.c \
 		push_swap.c \
+		print_stack.c \
 		quick_sort.c \
+		change_stack_fun.c \
 		change_a_stack.c \
 		change_b_stack.c \
 		change_both_stacks.c \
+		find_min_max.c \
 
 OBJF = $(addprefix $(DIR_O)/,$(patsubst %.c,%.o,$(SRCS)))
 

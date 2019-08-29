@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:46:33 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/28 19:55:31 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/29 21:28:09 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_num		*copy_argv_to_stack(char **arr, t_stack *stack)
 	{
 		num = (t_num*)malloc(sizeof(t_num));
 		num->val = ft_atoi(arr[len]);
-		num->index = i;
+		num->index = i + 1;
 		stack->arr[i] = *num;
 		len--;
 		i++;
@@ -56,29 +56,30 @@ t_stack		*create_argv_stack(int argc, char **argv)
 	return (a);
 }
 
-t_stack		*create_second_stack(int size)
+t_stack		*create_second_stack(t_stack *a)
 {
 	t_stack		*b;
 	int			i;
 	t_num		*num;
 
-	i = 0;
+	i = a->size - 1;
 	b = (t_stack*)malloc(sizeof(t_stack));
-	b->arr = (t_num*)malloc(sizeof(t_num) * size);
+	b->arr = (t_num*)malloc(sizeof(t_num) * a->size);
 	b->name = 'b';
 	b->used_size = 0;
-	b->size = size;
+	b->size = a->size;
 	b->min.val = 0;
 	b->min.index = -1;
 	b->max.val = 0;
 	b->max.index = -1;
-	while (i < size)
+	while (i >= 0)
 	{
 		num = (t_num*)malloc(sizeof(t_num));
-		num->val = 0;
-		num->index = -1;
 		b->arr[i] = *num;
-		i++;
+		b->arr[i].val = a->arr[i].val;
+		b->arr[i].index = a->arr[i].index;
+		i--;
+		b->used_size++;
 	}
 	return (b);
 }

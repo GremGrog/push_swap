@@ -5,7 +5,7 @@
             "label": "gcc build active file",
             "command": "make",
             "args": [
-                "re",
+
             ],
             "options": {
                 // "cwd": "/usr/bin"

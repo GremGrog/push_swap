@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 18:15:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/28 19:55:43 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/29 18:17:06 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int			validate_arg(char *str);
 t_stack		*create_argv_stack(int argc, char **argv);
 void		push_swap(int argc, char **argv);
 void		swap(int *a, int *b);
-void		quick_sort(int *arr, int low, int high);
-t_stack		*create_second_stack(int size);
+void		quick_sort(t_num *arr, int low, int high);
+t_stack		*create_second_stack(t_stack *a);
+void		set_to_zero_stack(t_stack *b);
 void		print_stack(t_stack *a, t_stack *b);
 
 void		swap_top(t_stack *stck);
@@ -59,3 +60,4 @@ void		rev_rotate_b(t_stack *a);
 void		rev_rotate_r(t_stack *a, t_stack *b);
 
 void		get_min_max(t_stack *stck);
+int			count_commands(t_stack *stck, t_num elem);

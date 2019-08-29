@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 11:17:28 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/27 14:53:57 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/29 19:34:07 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,29 @@ void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-int		partition(int *arr, int low, int high)
+int		partition(t_num *arr, int low, int high)
 {
 	int pivot;
 	int i;
 	int	j;
 
 	i = (low - 1);
-	pivot = arr[high];
+	pivot = arr[high].val;
 	j = low;
 	while (j <= high)
 	{
-		if (arr[j] < pivot)
+		if (arr[j].val > pivot)
 		{
 			i++;
-			swap(&arr[i], &arr[j]);
+			swap(&arr[i].val, &arr[j].val);
 		}
 		j++;
 	}
-	swap(&arr[i + 1], &arr[high]);
+	swap(&arr[i + 1].val, &arr[high].val);
 	return (i + 1);
 }
 
-void	quick_sort(int *arr, int low, int high)
+void	quick_sort(t_num *arr, int low, int high)
 {
 	if (low < high)
 	{

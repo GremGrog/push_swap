@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 18:50:50 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/29 19:02:27 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/30 12:10:26 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	rotate_b(t_stack *b)
 void	rev_rotate_b(t_stack *b)
 {
 	rev_rotate_stck(b);
-	ft_printf("rb\n");
+	ft_printf("rrb\n");
 }

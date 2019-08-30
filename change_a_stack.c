@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:15:41 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/29 17:56:54 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/30 15:39:38 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	push_a(t_stack *a, t_stack *b)
 	a->arr[a->used_size - 1].val = b->arr[b->used_size - 1].val;
 	b->arr[b->used_size - 1].index = -1;
 	b->used_size--;
-	get_min_max(a);
-	get_min_max(b);
+	// get_min_max(a);
+	// get_min_max(b);
 	ft_printf("pa\n");
 }
 

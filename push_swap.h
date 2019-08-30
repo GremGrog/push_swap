@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 18:15:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/29 18:17:06 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/30 20:13:31 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ void		rev_rotate_a(t_stack *a);
 void		rev_rotate_b(t_stack *a);
 void		rev_rotate_r(t_stack *a, t_stack *b);
 
-void		get_min_max(t_stack *stck);
+// void		get_min_max(t_stack *stck);
+int			find_max(t_stack *st);
+int			find_min(t_stack *st);
 int			count_commands(t_stack *stck, t_num elem);

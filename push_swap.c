@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/31 08:26:40 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/08/31 16:11:54 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,16 @@ void	kick_to_b_except_min_max(t_stack *a, t_stack *b, int aver_val)
 
 void	kick_val_to_top(t_stack *a, int val)
 {
-	while (a->arr[a->used_size - 1].index != val)
-		rotate_a(a);
+	if (val <= a->used_size)
+	{
+		while (a->arr[a->used_size - 1].index != val)
+			rev_rotate_a(a);
+	}
+	else
+	{
+		while (a->arr[a->used_size - 1].index != val)
+			rotate_a(a);
+	}
 }
 
 void	kick_less_val_from_b(t_stack *a, t_stack *b, int aver_val)
@@ -139,53 +147,50 @@ void	kick_less_val_from_b(t_stack *a, t_stack *b, int aver_val)
 	int	top_a;
 	int	top_b;
 	int	search;
+	int min;
 
+	min = find_min(a);
 	top_a = a->arr[a->used_size - 1].index;
 	top_b = b->arr[b->used_size - 1].index;
-	search = top_a - 1;
+	search = min + 1;
 	while (is_less_sort(b, aver_val) == -1)
 	{
 		top_a = a->arr[a->used_size - 1].index;
 		top_b = b->arr[b->used_size - 1].index;
-		search = top_a - 1;
 		if (search == top_b)
 		{
+			search++;
 			push_a(a, b);
 		}
 		else if (search_val(b, search) == 1)
 			rotate_b(b);
 		else
 			rev_rotate_b(b);
-		// print_stack(a, b);
 	}
 }
 
-void	kick_more_from_b(t_stack *a, t_stack *b)
+void	kick_more_from_b(t_stack *a, t_stack *b, int val)
 {
-	int	bottom_a;
 	int	top_b;
 	int	search;
 
-	bottom_a = a->arr[0].index;
 	top_b = b->arr[b->used_size - 1].index;
-	search = bottom_a + 1;
-	while (b->used_size > 0)
+	search = val + 1;
+	while (is_more_sort(b, val) == -1)
 	{
-		bottom_a = a->arr[0].index;
 		top_b = b->arr[b->used_size - 1].index;
-		search = bottom_a + 1;
 		if (search == top_b)
 		{
 			push_a(a, b);
-			rotate_a(a);
+			search++;
 		}
 		else if (search_val(b, search) == 1)
 			rotate_b(b);
 		else
 			rev_rotate_b(b);
-		// print_stack(a, b);
+		print_stack(a, b);
 	}
-	rotate_a(a);
+	// rotate_a(a);
 }
 
 void	sort_stacks(t_stack *a, t_stack *b)
@@ -197,16 +202,16 @@ void	sort_stacks(t_stack *a, t_stack *b)
 	max = find_max(a);
 	min = find_min(a);
 	aver_val = find_aver_val(a);
-	// print_stack(a, b);
+	print_stack(a, b);
 	kick_to_b_except_min_max(a, b, aver_val);
-	// print_stack(a, b);
-	kick_val_to_top(a, aver_val);
-	// print_stack(a, b);
+	print_stack(a, b);
+	 kick_val_to_top(a, aver_val);
+	print_stack(a, b);
 	kick_less_val_from_b(a, b, aver_val);
 	print_stack(a, b);
-	// kick_val_to_top(a, max);
+	// kick_val_to_top(a, aver_val);
 	// print_stack(a, b);
-	// kick_more_from_b(a, b);
+	// kick_more_from_b(a, b, aver_val);
 	// print_stack(a, b);
 	// kick_val_to_top(a, max);
 	// print_stack(a, b);
@@ -244,7 +249,7 @@ void    push_swap(int argc, char **argv)
 	quick_sort(b->arr, 0, b->used_size - 1);
 	// print_stack(a, b);
 	change_index(a, b);
-	print_stack(a, b);
+	// print_stack(a, b);
 	set_to_zero_stack(b);
 	// print_stack(a, b);
 	sort_stacks(a, b);

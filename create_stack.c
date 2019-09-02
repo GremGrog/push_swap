@@ -6,11 +6,38 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:46:33 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/30 15:39:25 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:25:40 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		set_to_zero_moves(t_num *n)
+{
+	n->ra = 0;
+	n->rb = 0;
+	n->rr = 0;
+	n->rra = 0;
+	n->rrb = 0;
+	n->rrr = 0;
+	n->swap = 0;
+	n->total_moves = 0;
+}
+
+t_num		*init_num(t_num *n)
+{
+	n->val = -1;
+	n->index = -1;
+	n->ra = 0;
+	n->rb = 0;
+	n->rr = 0;
+	n->rra = 0;
+	n->rrb = 0;
+	n->rrr = 0;
+	n->swap = 0;
+	n->total_moves = 0;
+	return (n);
+}
 
 t_num		*copy_argv_to_stack(char **arr, t_stack *stack)
 {
@@ -28,6 +55,7 @@ t_num		*copy_argv_to_stack(char **arr, t_stack *stack)
 	while (len >= 0)
 	{
 		num = (t_num*)malloc(sizeof(t_num));
+		num = init_num(num);
 		num->val = ft_atoi(arr[len]);
 		num->index = i + 1;
 		stack->arr[i] = *num;
@@ -52,7 +80,7 @@ t_stack		*create_argv_stack(int argc, char **argv)
 	else if (argc > 2)
 		a->arr = copy_argv_to_stack(argv, a);
 	a->name = 'a';
-	// get_min_max(a);
+	get_min_max(a);
 	return (a);
 }
 
@@ -68,13 +96,12 @@ t_stack		*create_second_stack(t_stack *a)
 	b->name = 'b';
 	b->used_size = 0;
 	b->size = a->size;
-	b->min.val = 0;
-	b->min.index = -1;
-	b->max.val = 0;
-	b->max.index = -1;
+	b->min = -1;
+	b->max = -1;
 	while (i >= 0)
 	{
 		num = (t_num*)malloc(sizeof(t_num));
+		num = init_num(num);
 		b->arr[i] = *num;
 		b->arr[i].val = a->arr[i].val;
 		b->arr[i].index = a->arr[i].index;

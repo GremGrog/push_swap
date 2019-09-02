@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 19:45:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/31 15:33:40 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/02 14:06:15 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	swap_top(t_stack *stck)
 	if (stck->used_size < 2)
 		return ;
 	swap(&(stck->arr[stck->used_size - 1].val), &(stck->arr[stck->used_size - 2].val));
-	// get_min_max(stck);
 }
 
 void	rotate_stck(t_stack *stck)
@@ -31,12 +30,10 @@ void	rotate_stck(t_stack *stck)
 	{
 		stck->arr[i].index = stck->arr[i - 1].index;
 		stck->arr[i].val = stck->arr[i - 1].val;
-		// stck->arr[i].index = stck->arr[i - 1].index + 1;
 		i--;
 	}
 	stck->arr[i].val = tmp.val;
 	stck->arr[i].index = tmp.index;
-	// get_min_max(stck);
 }
 
 void	rev_rotate_stck(t_stack *stck)
@@ -51,11 +48,8 @@ void	rev_rotate_stck(t_stack *stck)
 	{
 		stck->arr[i].index = stck->arr[i + 1].index;
 		stck->arr[i].val = stck->arr[i + 1].val;
-		// stck->arr[i].index = stck->arr[i + 1].index - 1;
 		i++;
 	}
 	stck->arr[i].val = tmp.val;
 	stck->arr[i].index = tmp.index;
-	// stck->arr[i].index = stck->used_size - 1;
-	// get_min_max(stck);
 }

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 11:17:39 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/31 05:18:42 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/02 19:08:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	print_stack(t_stack *a, t_stack *b)
 		if (IS_EMPTY(a->arr[i].index) == -1)
 			ft_printf("%-17c", '-');
 		if (IS_EMPTY(b->arr[j].index) == 0)
+		{
 			ft_printf("%3d %{yellow}d", b->arr[j].index, b->arr[i].val);
+			ft_printf("         ra%d rb%d rr%d rra%d rrb%d rrr%d total%d", b->arr[j].ra, b->arr[j].rb, b->arr[j].rr, b->arr[j].rra, b->arr[j].rrb, b->arr[j].rrr, b->arr[j].total_moves);
+		}
 		if (IS_EMPTY(b->arr[j].index) == -1)
 			ft_printf("%3c", '-');
 			ft_printf("\n");

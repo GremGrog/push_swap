@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 18:15:44 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/02 19:06:35 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 17:17:54 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int			find_max(t_stack *st);
 int			find_min(t_stack *st);
 void		count_moves(t_stack *a, t_stack *b);
 
+int			is_it_sort(t_stack *a);
+int			is_it_dup(t_stack *a);
 int			is_less_sort(t_stack *a, int med);
 int			is_more_sort(t_stack *a, int med);
 int			is_range_sort(t_stack *a, int bottom, int top);
@@ -81,3 +83,14 @@ int			search_less_values(t_stack *stck, int val);
 int			search_less_val(t_stack *stck, int val);
 int			search_val(t_stack *stck, int val);
 int			find_aver_val(t_stack *a);
+void		del_stack(t_stack *stck);
+t_num		unit_moves(t_num val);
+
+void	kick_less_values(t_stack *a, t_stack *b, int value);
+void	kick_more_values(t_stack *a, t_stack *b, int value);
+void	kick_values_in_range(t_stack *a, t_stack *b, int bottom, int top);
+void	kick_to_b_except_min_max(t_stack *a, t_stack *b, int hold_min, int hold_max);
+void	kick_val_to_top(t_stack *a, int val);
+void	change_index(t_stack *a, t_stack *b);
+void	do_moves(t_stack *a, t_stack *b);
+int		find_min_actions(t_stack *b);

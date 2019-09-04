@@ -6,63 +6,58 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 17:19:08 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/02 19:25:30 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 17:02:01 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	unit_rotate(t_num *num)
+int		find_max_between_mins(t_stack *a, t_num val)
 {
+	t_num	max_min;
+	t_num	min;
+	int		i;
 
-	if (num->ra > num->rb && num->ra != 0 && num->rb != 0)
+	i = 0;
+	max_min.index = -1;
+	min.index = -1;
+	while (i < a->used_size)
 	{
-		num->rr = num->rb;
-		num->rb = 0;
+		if (a->arr[i].index < val.index)
+		{
+			min = a->arr[i];
+			if (max_min.index < min.index)
+				max_min = min;
+		}
+		i++;
 	}
-	if (num->ra < num->rb && num->ra != 0 && num->rb != 0)
-	{
-		num->rr = num->ra;
-		num->ra = 0;
-	}
-	else if (num->ra ==  num->rb && num->ra != 0 &&  num->rb != 0)
-	{
-		num->rr = num->ra;
-		num->ra = 0;
-		num->rb = 0;
-	}
-	else
-		num->rr = 0;
+	i = 0;
+	while (a->arr[i].index != max_min.index)
+		i++;
+	return (i);
 }
 
-void	unit_rev_rotate(t_num *num)
+t_num	count_stack_a_moves(t_stack *a, t_num val)
 {
+	int	j;
+	int	half;
 
-	if (num->rra > num->rrb && num->rra != 0 && num->rrb != 0)
+	j = find_max_between_mins(a, val);
+	half = a->used_size / 2;
+	if (j >= half)
 	{
-		num->rrr = num->rrb;
-		num->rrb = 0;
+		if (j != a->used_size - 1)
+			val.ra = a->used_size - j - 1;
+		else
+			val.ra = 0;
 	}
-	if (num->rra < num->rrb && num->rra != 0 && num->rrb != 0)
+	else if (j < half)
 	{
-		num->rrr = num->rra;
-		num->rra = 0;
+		if (j == 0 || j == -1)
+			val.rra = 1;
+		else
+			val.rra = j + 1;
 	}
-	else if (num->rra ==  num->rrb && num->rra != 0 &&  num->rrb != 0)
-	{
-		num->rrr = num->rra;
-		num->rra = 0;
-		num->rrb = 0;
-	}
-	else
-		num->rrr = 0;
-}
-
-t_num	unit_moves(t_num val)
-{
-	unit_rotate(&val);
-	unit_rev_rotate(&val);
-	val.total_moves = val.ra + val.rb + val.rra + val.rrb + val.rr + val.rrr + 1;
 	return (val);
 }
 
@@ -70,25 +65,15 @@ t_num	count_moves_for_num(t_stack *a, t_stack *b, t_num val, int i)
 {
 	int half;
 	int	j;
-	
+
 	set_to_zero_moves(&val);
-	j = 0;
+	j = a->used_size - 1;
 	half = b->used_size / 2;
 	if (i < half)
-		val.rrb = 0 + i + 1;
+		val.rrb = i + 1;
 	else if (i >= half)
-		val.rb = b->used_size - i - 1;
-	while (j < a->used_size)
-	{
-		if (a->arr[j].index < val.index && a->arr[j + 1].index > val.index)
-			break ;
-		j++;
-	}
-	half = a->used_size / 2;
-	if (j < half)
-		val.rra = j + 1;
-	else if (j >= half)
-		val.ra = j - 1 + 1;
+		val.rb = b->used_size - 1 - i;
+	val = count_stack_a_moves(a, val);
 	val = unit_moves(val);
 	return (val);
 }

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 19:45:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/02 14:06:15 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:51:44 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	swap_top(t_stack *stck)
 {
 	if (stck->used_size < 2)
 		return ;
-	swap(&(stck->arr[stck->used_size - 1].val), &(stck->arr[stck->used_size - 2].val));
+	swap(&(stck->arr[stck->used_size - 1].val), \
+	&(stck->arr[stck->used_size - 2].val));
 }
 
 void	rotate_stck(t_stack *stck)

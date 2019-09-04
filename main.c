@@ -6,13 +6,13 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 18:16:35 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/30 17:54:11 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 17:09:05 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
@@ -30,5 +30,6 @@ int main(int argc, char **argv)
 			exit(0);
 		}
 	}
-	push_swap(argc, argv);
+	if (argc >= 2)
+		push_swap(argc, argv);
 }

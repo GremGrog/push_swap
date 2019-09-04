@@ -6,12 +6,11 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 17:22:29 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/02 17:23:46 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:55:54 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int		find_aver_val(t_stack *a)
 {
@@ -28,7 +27,6 @@ int		find_aver_val(t_stack *a)
 	mean /= a->used_size;
 	return (mean);
 }
-
 
 int		search_val(t_stack *stck, int val)
 {

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 11:17:28 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/29 19:34:07 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:55:07 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ int		partition(t_num *arr, int low, int high)
 
 void	quick_sort(t_num *arr, int low, int high)
 {
+	int	pi;
+
 	if (low < high)
 	{
-		int pi = partition(arr, low, high);
+		pi = partition(arr, low, high);
 		quick_sort(arr, low, pi - 1);
 		quick_sort(arr, pi + 1, high);
 	}

@@ -6,22 +6,49 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 17:44:56 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/05 19:54:15 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// void	sort_three(t_stack *a)
-// {
-// 	if ((a->min.index == 0 && a->max.index == 2) || 
-// 	(a->min.index == 2 && a->max.index == 1) || (a->min.index == 1 && a->max.index == 0))
-// 		swap_a(a);
-// 	if (a->min.index == 1 && a->max.index == 2)
-// 		rotate_a(a);
-// 	if (a->min.index == 0 && a->max.index == 1)
-// 		rev_rotate_a(a);
-// }
+void	sort_three(t_stack *a)
+{
+	int	top;
+	int	mid;
+	int	bottom;
+
+	top = 2;
+	mid = 1;
+	bottom = 0;
+	if ((a->max == a->arr[top].index && a->min == a->arr[mid].index) || 
+	(a->min == a->arr[bottom].index && a->max == a->arr[mid].index) || 
+	(a->min == a->arr[top].index && a->max == a->arr[bottom].index))
+		swap_a(a);
+	if (a->max == a->arr[mid].index && a->min == a->arr[top].index)
+		rotate_a(a);
+	if (a->min == a->arr[mid].index && a->max == a->arr[bottom].index)
+		rev_rotate_a(a);
+}
+
+void	sort_small(t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = a->used_size - 1;
+	while (a->used_size > 3)
+	{
+		if (a->arr[i].index != a->min && a->arr[i].index != a->max)
+			push_b(a, b);
+		else
+			rotate_a(a);
+	}
+	sort_three(a);
+	rotate_a(a);
+	push_a(a, b);
+	push_a(a, b);
+	rev_rotate_a(a);
+}
 
 int		find_min_actions(t_stack *b)
 {
@@ -70,7 +97,10 @@ void	push_swap(int argc, char **argv)
 	hold_min = b->arr[a->used_size / 3].index;
 	hold_max = b->arr[a->used_size - a->used_size / 3].index;
 	set_to_zero_stack(b);
-	sort_stacks(a, b, hold_min, hold_max);
+	if (a->used_size >= 2 && a->used_size <= 5)
+		sort_small(a, b);
+	else if (a->used_size > 5)
+		sort_stacks(a, b, hold_min, hold_max);
 	del_stack(a);
 	del_stack(b);
 }

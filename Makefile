@@ -6,15 +6,21 @@
 #    By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/23 18:40:37 by fmasha-h          #+#    #+#              #
-#    Updated: 2019/09/05 11:16:57 by fmasha-h         ###   ########.fr        #
+#    Updated: 2019/09/05 16:09:18 by fmasha-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PUSH_SWAP = push_swap
 
+CHECKER = checker
+
+LIB = make -C libft
+
 FLAGS = -Wall -Wextra -Werror -g
 
-PUSH_SWAP_DIR_O = obj
+PUSH_SWAP_DIR_O = push_swap_obj
+
+CHECKER_DIR_O = checker_obj
 
 INCLUDES =  push_swap.h -I libft/libft.h
 
@@ -22,46 +28,69 @@ LIBFT = libft/libft.a
 
 PUSH_SWAP_DIR = push_swap_srcs
 
-PUSH_SWAP_SRCS =	main.c \
-					validation.c \
-					create_stack.c \
-					push_swap.c \
+CHECKER_DIR = checker_srcs
+
+PUSH_SWAP_MAIN = push_swap_srcs/main_push_swap.c
+
+CHECKER_MAIN = checker_srcs/main_checker.c
+
+PUSH_SWAP_SRCS =	push_swap.c \
 					print_stack.c \
 					quick_sort.c \
-					change_stack_fun.c \
-					change_a_stack.c \
-					change_b_stack.c \
-					change_both_stacks.c \
 					find_min_max.c \
 					set_to_zero_stack.c \
 					is_sort_checkers.c \
 					search_values.c \
 					count_moves.c \
-					del_stack.c \
 					unit_moves.c \
 					kick_values.c \
 					do_moves.c \
+					create_stack.c \
+					change_stack_fun.c \
+					change_a_stack.c \
+					change_b_stack.c \
+					change_both_stacks.c \
+					del_stack.c \
+					validation.c \
+
+CHECKER_SRCS = 	commands_list_functions.c \
+				validate_commands.c \
 
 PUSH_SWAP_OBJF = $(addprefix $(PUSH_SWAP_DIR_O)/,$(patsubst %.c,%.o,$(PUSH_SWAP_SRCS)))
 
-all: $(PUSH_SWAP)
+CHECKER_OBJF = $(addprefix $(CHECKER_DIR_O)/,$(patsubst %.c,%.o,$(CHECKER_SRCS)))
+
+all: $(LIB) $(PUSH_SWAP) $(CHECKER)
 
 $(PUSH_SWAP_DIR_O):
-	@mkdir -p obj
+	@mkdir -p push_swap_obj
 
-$(PUSH_SWAP): $(PUSH_SWAP_DIR_O) $(PUSH_SWAP_OBJF)
+$(CHECKER_DIR_O):
+	@mkdir -p checker_obj
+
+$(LIB):
 	@make -C libft
-	gcc $(FLAGS) $(PUSH_SWAP_OBJF) $(LIBFT) -o $(PUSH_SWAP)
+
+$(PUSH_SWAP): $(PUSH_SWAP_DIR_O) $(PUSH_SWAP_OBJF) $(LIB)
+	@gcc $(FLAGS) $(PUSH_SWAP_MAIN) $(PUSH_SWAP_OBJF) $(LIBFT) -o $(PUSH_SWAP)
+
+$(CHECKER): $(CHECKER_DIR_O) $(CHECKER_OBJF) $(LIB)
+	@gcc $(FLAGS) $(CHECKER_MAIN) $(CHECKER_OBJF) $(PUSH_SWAP_OBJF) $(LIBFT) -o $(CHECKER)
 
 $(PUSH_SWAP_DIR_O)/%.o: $(PUSH_SWAP_DIR)/%.c 
 	@gcc $(FLAGS) -I $(INCLUDES) -o $@ -c $<
 
+$(CHECKER_DIR_O)/%.o: $(CHECKER_DIR)/%.c 
+	@gcc $(FLAGS) -I $(INCLUDES) -o $@ -c $<
+
 clean:
 	@rm -rf $(PUSH_SWAP_DIR_O)
+	@rm -rf $(CHECKER_DIR_O)
 	@make clean -C libft
 
 fclean: clean
 	@rm -rf $(PUSH_SWAP)
+	@rm -rf $(CHECKER)
 	@make fclean -C libft
 
 re: fclean all

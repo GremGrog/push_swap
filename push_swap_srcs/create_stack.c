@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:46:33 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 10:54:43 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:05:55 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ t_stack		*create_argv_stack(int argc, char **argv)
 		a->arr = copy_argv_to_stack(argv, a);
 	a->name = 'a';
 	get_min_max(a);
-	del_matrix(arr);
+	if (arr)
+		del_matrix(arr);
 	free(arr);
 	return (a);
 }

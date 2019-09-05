@@ -6,11 +6,22 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 10:55:11 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:44:56 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// void	sort_three(t_stack *a)
+// {
+// 	if ((a->min.index == 0 && a->max.index == 2) || 
+// 	(a->min.index == 2 && a->max.index == 1) || (a->min.index == 1 && a->max.index == 0))
+// 		swap_a(a);
+// 	if (a->min.index == 1 && a->max.index == 2)
+// 		rotate_a(a);
+// 	if (a->min.index == 0 && a->max.index == 1)
+// 		rev_rotate_a(a);
+// }
 
 int		find_min_actions(t_stack *b)
 {
@@ -37,8 +48,7 @@ void	sort_stacks(t_stack *a, t_stack *b, int hold_min, int hold_max)
 		count_moves(a, b);
 		do_moves(a, b);
 	}
-	kick_val_to_top(a, a->max);
-	// print_stack(a, b);
+	kick_val_to_top(a, a->max);	
 }
 
 void	push_swap(int argc, char **argv)

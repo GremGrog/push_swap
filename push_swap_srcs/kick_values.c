@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 17:04:04 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 10:55:02 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 19:49:20 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	kick_values_in_range(t_stack *a, t_stack *b, int bottom, int top)
 	}
 }
 
-void	kick_to_b_except_min_max(t_stack *a, t_stack *b, int h_min, int h_max)
+void	kick_to_b_except(t_stack *a, t_stack *b, int h_min, int h_max)
 {
 	int	i;
 	int	aver_val;
@@ -74,7 +74,7 @@ void	kick_to_b_except_min_max(t_stack *a, t_stack *b, int h_min, int h_max)
 
 void	kick_val_to_top(t_stack *a, int val)
 {
-	if (val <= a->used_size / 2)
+	if (a->arr[val - 1].index <= a->used_size / 2)
 	{
 		while (a->arr[a->used_size - 1].index != val)
 			rev_rotate_a(a);

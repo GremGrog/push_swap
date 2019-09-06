@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:44:12 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/08/24 16:04:37 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 15:18:22 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include "ft_printf/MainHeader/ft_printf.h"
 
-# define BUFF_SIZE 21
+# define BUFF_SIZE 100
 
 typedef	struct		s_list
 {

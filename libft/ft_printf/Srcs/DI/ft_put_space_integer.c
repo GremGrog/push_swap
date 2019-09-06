@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_space_integer.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmebble <qmebble@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 18:00:49 by qmebble           #+#    #+#             */
-/*   Updated: 2019/05/17 18:00:49 by qmebble          ###   ########.fr       */
+/*   Updated: 2019/09/06 15:37:22 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	ft_put_space_integer(t_pf *data)
 	while (g_buffer->str[++i - 1] != '\0' && g_buffer->str[i - 1])
 		g_buffer->final[i] = g_buffer->str[i - 1];
 	ft_strcpy(g_buffer->str, g_buffer->final);
-	ft_bzero(g_buffer->final, g_buffer->buff_size + 1);
+	ft_bzero(g_buffer->final, g_buffer->buff_size);
 	g_buffer->str_len = i;
 }

@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:15:41 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 11:05:37 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 13:53:26 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ void	swap_a(t_stack *a)
 		return ;
 	swap_top(a);
 	ft_printf("sa\n");
+}
+
+void	push_stck_a(t_stack *a, t_stack *b)
+{
+	if (b->used_size == 0)
+		return ;
+	a->used_size++;
+	a->arr[a->used_size - 1].index = b->arr[b->used_size - 1].index;
+	a->arr[a->used_size - 1].val = b->arr[b->used_size - 1].val;
+	b->arr[b->used_size - 1].index = -1;
+	b->used_size--;
 }
 
 void	push_a(t_stack *a, t_stack *b)

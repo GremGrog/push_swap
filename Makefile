@@ -6,7 +6,7 @@
 #    By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/23 18:40:37 by fmasha-h          #+#    #+#              #
-#    Updated: 2019/09/05 16:09:18 by fmasha-h         ###   ########.fr        #
+#    Updated: 2019/09/06 17:06:43 by fmasha-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,9 +52,13 @@ PUSH_SWAP_SRCS =	push_swap.c \
 					change_both_stacks.c \
 					del_stack.c \
 					validation.c \
+					small_sort.c \
+					error_handle.c \
+					copy_argv_to_stack.c \
 
 CHECKER_SRCS = 	commands_list_functions.c \
 				validate_commands.c \
+				change_stacks_without_output.c \
 
 PUSH_SWAP_OBJF = $(addprefix $(PUSH_SWAP_DIR_O)/,$(patsubst %.c,%.o,$(PUSH_SWAP_SRCS)))
 

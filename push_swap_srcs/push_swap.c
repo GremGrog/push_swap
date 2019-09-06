@@ -6,49 +6,11 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 19:54:15 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 19:49:00 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	sort_three(t_stack *a)
-{
-	int	top;
-	int	mid;
-	int	bottom;
-
-	top = 2;
-	mid = 1;
-	bottom = 0;
-	if ((a->max == a->arr[top].index && a->min == a->arr[mid].index) || 
-	(a->min == a->arr[bottom].index && a->max == a->arr[mid].index) || 
-	(a->min == a->arr[top].index && a->max == a->arr[bottom].index))
-		swap_a(a);
-	if (a->max == a->arr[mid].index && a->min == a->arr[top].index)
-		rotate_a(a);
-	if (a->min == a->arr[mid].index && a->max == a->arr[bottom].index)
-		rev_rotate_a(a);
-}
-
-void	sort_small(t_stack *a, t_stack *b)
-{
-	int	i;
-
-	i = a->used_size - 1;
-	while (a->used_size > 3)
-	{
-		if (a->arr[i].index != a->min && a->arr[i].index != a->max)
-			push_b(a, b);
-		else
-			rotate_a(a);
-	}
-	sort_three(a);
-	rotate_a(a);
-	push_a(a, b);
-	push_a(a, b);
-	rev_rotate_a(a);
-}
 
 int		find_min_actions(t_stack *b)
 {
@@ -68,14 +30,14 @@ int		find_min_actions(t_stack *b)
 
 void	sort_stacks(t_stack *a, t_stack *b, int hold_min, int hold_max)
 {
-	kick_to_b_except_min_max(a, b, hold_min, hold_max);
+	kick_to_b_except(a, b, hold_min, hold_max);
 	count_moves(a, b);
 	while (b->used_size > 0)
 	{
 		count_moves(a, b);
 		do_moves(a, b);
 	}
-	kick_val_to_top(a, a->max);	
+	kick_val_to_top(a, a->max);
 }
 
 void	push_swap(int argc, char **argv)
@@ -85,12 +47,10 @@ void	push_swap(int argc, char **argv)
 	int		hold_min;
 	int		hold_max;
 
-	a = create_argv_stack(argc, argv);
-	if (is_it_sort(a) == 0 || (is_it_dup(a) == 1))
-	{
-		del_stack(a);
+	if ((a = create_argv_stack(argc, argv)) == NULL)
 		return ;
-	}
+	if (check_errors(a) == -1 || is_it_sort(a) == 0)
+		return ;
 	b = create_second_stack(a);
 	quick_sort(b->arr, 0, b->used_size - 1);
 	change_index(a, b);

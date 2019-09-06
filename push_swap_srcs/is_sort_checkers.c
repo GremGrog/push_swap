@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 17:20:41 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 10:54:58 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 16:52:29 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		is_range_sort(t_stack *a, int bottom, int top)
 {
 	int	i;
 
+	if (a == NULL)
+		return (-1);
 	i = a->used_size - 1;
 	while (i >= 0)
 	{
@@ -33,6 +35,8 @@ int		is_more_sort(t_stack *a, int med)
 {
 	int	i;
 
+	if (a == NULL)
+		return (-1);
 	i = a->used_size - 1;
 	while (i >= 0)
 	{
@@ -47,6 +51,8 @@ int		is_less_sort(t_stack *a, int med)
 {
 	int	i;
 
+	if (a == NULL)
+		return (-1);
 	i = a->used_size - 1;
 	while (i >= 0)
 	{
@@ -61,6 +67,8 @@ int		is_it_sort(t_stack *a)
 {
 	int	i;
 
+	if (a == NULL)
+		return (-1);
 	i = a->used_size - 1;
 	while (i > 0)
 	{
@@ -77,10 +85,12 @@ int		is_it_dup(t_stack *a)
 	int	j;
 	int	f;
 
+	if (a == NULL)
+		return (-1);
 	i = a->used_size - 1;
 	j = 0;
 	f = 0;
-	while (i < a->used_size)
+	while (i >= 0)
 	{
 		j = 0;
 		f = 0;
@@ -92,7 +102,7 @@ int		is_it_dup(t_stack *a)
 		}
 		if (f > 1)
 			return (1);
-		i++;
+		i--;
 	}
 	return (0);
 }

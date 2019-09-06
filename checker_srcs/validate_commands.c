@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:57:47 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/05 18:20:38 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/06 13:59:32 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		validate_commands(char *line)
 		return (9);
 	else if (ft_strcmp("rrr", line) == 0)
 		return (10);
+	else if (ft_strcmp("ss", line) == 0)
+		return (11);
 	else
 		return (-1);
 }

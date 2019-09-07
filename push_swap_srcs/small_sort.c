@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 13:11:18 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/06 15:33:35 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/07 13:31:58 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,10 @@ void	sort_three(t_stack *a)
 
 void	kick_from_b(t_stack *a, t_stack *b)
 {
-	int	top_b;
-	int	top_a;
-
-	rotate_a(a);
 	while (b->used_size > 0)
 	{
-		top_a = a->used_size - 1;
-		top_b = b->used_size - 1;
-		if (a->arr[top_a].index + 1 == b->arr[top_b].index)
-			push_a(a, b);
-		else if (b->used_size > 1)
-			swap_b(b);
-		else
-			rotate_a(a);
+		count_moves(a, b);
+		do_moves(a, b);
 	}
 }
 
@@ -58,7 +48,10 @@ void	sort_small(t_stack *a, t_stack *b)
 	while (a->used_size > 3)
 	{
 		if (a->arr[i].index != a->min && a->arr[i].index != a->max)
+		{
 			push_b(a, b);
+			i = a->used_size - 1;
+		}
 		else
 			rotate_a(a);
 	}

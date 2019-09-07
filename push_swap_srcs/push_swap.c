@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 15:48:01 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/06 19:49:00 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/07 12:42:31 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ void	push_swap(int argc, char **argv)
 	if ((a = create_argv_stack(argc, argv)) == NULL)
 		return ;
 	if (check_errors(a) == -1 || is_it_sort(a) == 0)
+	{
+		if (a)
+			del_stack(a);
 		return ;
+	}
 	b = create_second_stack(a);
 	quick_sort(b->arr, 0, b->used_size - 1);
 	change_index(a, b);

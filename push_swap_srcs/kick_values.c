@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 17:04:04 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/07 13:21:09 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:26:40 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,12 @@ void	kick_to_b_except(t_stack *a, t_stack *b, int h_min, int h_max)
 
 void	kick_val_to_top(t_stack *a, int val)
 {
-	if (a->arr[val].index < a->used_size / 2)
+	int	i;
+
+	i = 0;
+	while (i < a->used_size && a->arr[i].index != val)
+		i++;
+	if (i < a->used_size / 2)
 	{
 		while (a->arr[a->used_size - 1].index != val)
 			rev_rotate_a(a);

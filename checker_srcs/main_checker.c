@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 11:25:38 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/06 19:25:37 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:17:39 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void			checker(int argc, char **argv)
 	head = NULL;
 	a = create_argv_stack(argc, argv);
 	if (check_errors(a) == -1)
+	{
+		del_stack(a);
 		return ;
+	}
 	b = create_second_stack(a);
 	set_to_zero_stack(b);
 	if ((head = read_input(a, b)) == NULL)

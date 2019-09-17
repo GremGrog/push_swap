@@ -6,7 +6,7 @@
 /*   By: fmasha-h <fmasha-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 15:49:37 by fmasha-h          #+#    #+#             */
-/*   Updated: 2019/09/07 17:50:55 by fmasha-h         ###   ########.fr       */
+/*   Updated: 2019/09/10 13:44:00 by fmasha-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		check_errors(t_stack *a)
 		ft_printf("Error\n");
 		return (-1);
 	}
-	if (a == NULL)
+	if (a == NULL || a->used_size == 1)
 		return (-1);
 	return (0);
 }
